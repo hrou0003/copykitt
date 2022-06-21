@@ -1,8 +1,10 @@
 from fastapi import FastAPI, HTTPException
 from copykitt import generate_branding_snippet, generate_keywords
+from mangum import Mangun
 
 
 app = FastAPI()
+handler = Mangum(app)
 MAX_INPUT_LENGTH = 32
 
 @app.get("/generate_snippet")
@@ -28,3 +30,5 @@ async def generate_snippet_and_keywords(prompt: str):
 def validate_input_length(prompt: str):
     if len(prompt) >= MAX_INPUT_LENGTH:
         raise HTTPException(status_code=400, detail=f"Input length is too long. Must be under {MAX_INPUT_LENGTH} characters.")
+
+

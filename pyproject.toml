@@ -8,6 +8,7 @@ authors = ["Harrison <54772688+hrou0003@users.noreply.github.com>"]
 python = "^3.9"
 openai = "^0.20.0"
 fastapi = {extras = ["all"], version = "^0.78.0"}
+mangum = "^0.15.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
