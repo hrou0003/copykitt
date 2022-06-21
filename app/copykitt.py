@@ -1,10 +1,12 @@
+from multiprocessing.sharedctypes import Value
 import os
 import openai
 import argparse
+import re
 
+MAX_INPUT_LENGTH = 32
 
 def main():
-    print("running copy kitt!")
 
     parser = argparse.ArgumentParser()
 
@@ -13,12 +15,34 @@ def main():
     user_input = args.input
     print(f"user input: {user_input}")
 
-    result = generate_branding_snippet(user_input)
-    print(result)
+    if validate_length(user_input):
+        snippet_result = generate_branding_snippet(user_input)
+        keywords_result = generate_keywords(user_input)
+        print(snippet_result, keywords_result)
+    else:
+        raise ValueError(f"Input length is too long. Must be under {MAX_INPUT_LENGTH}")
 
+def validate_length(prompt: str) -> bool:
+    return len(prompt) < MAX_INPUT_LENGTH
+
+def generate_keywords(prompt):
+    openai.api_key = "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"
+
+    enriched_prompt = f"Generate related branding keywords for {prompt}"
+    response = openai.Completion.create(engine="text-davinci-002", prompt=enriched_prompt, max_tokens=32)
+
+    # Extract the text from OpenAI response
+    keywords_text: str = response["choices"][0]["text"]
+
+    # Strip whitespace
+    keywords_text = keywords_text.strip()
+    keywords_array = re.split(",|\n| |-", keywords_text)
+
+    return keywords_array
 
 def generate_branding_snippet(prompt):
-    openai.api_key = "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"
+
+    openai.api_key = "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"
 
     enriched_prompt = f"Generate upbeat branding snippet for {prompt}"
     response = openai.Completion.create(engine="text-davinci-002", prompt=enriched_prompt, max_tokens=32)

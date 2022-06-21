@@ -7,6 +7,7 @@ authors = ["Harrison <54772688+hrou0003@users.noreply.github.com>"]
 [tool.poetry.dependencies]
 python = "^3.9"
 openai = "^0.20.0"
+fastapi = {extras = ["all"], version = "^0.78.0"}
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
