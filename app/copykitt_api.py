@@ -1,6 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from copykitt import generate_branding_snippet, generate_keywords
-from mangum import Mangun
+from mangum import Mangum
 
 
 app = FastAPI()

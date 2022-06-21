@@ -26,7 +26,8 @@ def validate_length(prompt: str) -> bool:
     return len(prompt) < MAX_INPUT_LENGTH
 
 def generate_keywords(prompt):
-    openai.api_key = "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"
+
+    openai.api_key = os.getenv("OPENAI_API_KEY")
 
     enriched_prompt = f"Generate related branding keywords for {prompt}"
     response = openai.Completion.create(engine="text-davinci-002", prompt=enriched_prompt, max_tokens=32)
@@ -42,7 +43,8 @@ def generate_keywords(prompt):
 
 def generate_branding_snippet(prompt):
 
-    openai.api_key = "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"
+
+    openai.api_key = os.getenv("OPENAI_API_KEY")
 
     enriched_prompt = f"Generate upbeat branding snippet for {prompt}"
     response = openai.Completion.create(engine="text-davinci-002", prompt=enriched_prompt, max_tokens=32)
