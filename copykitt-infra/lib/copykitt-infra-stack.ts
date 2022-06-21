@@ -31,5 +31,9 @@ export class CopykittInfraStack extends Stack {
     const copyKittApi = new apiGateway.RestApi(this, "RestApi", {
       restApiName: "CopyKitt Tutorial API",
     })
+
+    copyKittApi.root.addProxy({
+      defaultIntegration: new apiGateway.LambdaIntegration(apiLambda)
+    })
   }
 }
