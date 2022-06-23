@@ -1,4 +1,5 @@
 import Keyword from "./Keyword";
+import { nanoid } from 'nanoid'
 
 interface ResultsProps {
   snippet: string;
@@ -12,7 +13,7 @@ const Results: React.FC<ResultsProps> = ({snippet, keywords, onReset}) => {
       <div>
         Here are your results:
         <div>Snippet: {snippet}</div>
-        <div>Keywords: {keywords.map((keyword, index) => (<span><Keyword key={index} keyword={keyword}/> </span>))}</div>
+        <div>Keywords: {keywords.map((keyword, index) => (<span key={index}><Keyword keyword={keyword}/> </span>))}</div>
         <button onClick={onReset}>go back</button>
       </div>
     </>)

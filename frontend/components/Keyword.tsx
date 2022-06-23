@@ -2,14 +2,13 @@ import internal from "stream";
 
 interface KeywordProps {
     keyword: string;
-    key: number;
 }
 
-const Keyword: React.FC<KeywordProps> = ({keyword, key}) => {
+const Keyword: React.FC<KeywordProps> = ({keyword}) => {
     return (
-        <span key={key}>
+        <div>
             #{keyword}
-        </span>
+        </div>
     )
 }
 
