@@ -35,17 +35,20 @@ const CopyKitt: React.FC = () => {
 
 
   return (
-    <>
-      <h1>CopyKitt!</h1>
+    <div className="h-screen flex">
+    <div className="max-w-md m-auto p-2">
+      <div className="bg-gray-700 p-6 rounded-md text-white text-center">
+        <h1 className="text-white font-bold underline">CopyKitt!</h1>
 
-      {hasResult ? 
-        <Results snippet={snippet} keywords={keywords} onReset={onReset}/> 
-        : 
-        <Form prompt={prompt} setPrompt={setPrompt} onSubmit={onSubmit} isLoading={isLoading}/>
-      }
+        {hasResult ?
+          <Results snippet={snippet} keywords={keywords} onReset={onReset} />
+          :
+          <Form prompt={prompt} setPrompt={setPrompt} onSubmit={onSubmit} isLoading={isLoading} />
+        }
 
-
-    </>
+      </div>
+    </div>
+    </div>
   );
 }
 

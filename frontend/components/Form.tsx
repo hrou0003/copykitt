@@ -22,7 +22,7 @@ const Form: React.FC<FormProps> = ({ prompt, setPrompt, onSubmit, isLoading }) =
                 Tell me what your brand is about and I will generate copy and keywords for you.
             </p>
             <span>
-                <input type="text" value={prompt} placeholder="coffee" onChange={e => updatePromptValue(e.currentTarget.value)}></input>
+                <input className="text-black" type="text" value={prompt} placeholder="coffee" onChange={e => updatePromptValue(e.currentTarget.value)}></input>
                 {isLoading && <TailSpin color="#000" height={"1rem"} width={"1rem"} />}
             </span>
             <div>{prompt.length}/{characterLimit}</div>
