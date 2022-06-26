@@ -36,8 +36,7 @@ def generate_keywords(prompt):
     keywords_text: str = response["choices"][0]["text"]
 
     # Strip whitespace
-    keywords_text = keywords_text.strip()
-    keywords_array = re.split(",|\n| |-", keywords_text)
+    keywords_array = re.sub(",|\n|-", '', keywords_text).split(' ')
 
     return keywords_array
 
@@ -55,7 +54,7 @@ def generate_branding_snippet(prompt):
     # Strip whitespace
     branding_text = branding_text.strip()
 
-    # Add .. to truncated statements
+    # Add ... to truncated statements
     last_char = branding_text[-1]
 
     if last_char not in {".", "!", "?"}:
